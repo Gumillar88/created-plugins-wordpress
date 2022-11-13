@@ -35,4 +35,3 @@
         </div>
     </div>
 </div>
-<!-- <a href="<?php //echo admin_url().'/admin.php?page=create_clients';?>" class="page-title-action">Add New</a> -->
