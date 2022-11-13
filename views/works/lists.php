@@ -21,11 +21,11 @@ $_getAllContentPost     = $projects['rel_content_post'];
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 bg-white">
             <?php if ($_GET['page'] == 'works' AND $_GET['action'] == 'create') { ?>
-                This create
+                <?php include TEMP_DIR.dynamicModules()[1].'/create.php'; ?>
             <?php } elseif ($_GET['page'] == 'works' AND $_GET['action'] == 'edit') { ?>
-                This Edit
+                <?php include TEMP_DIR.dynamicModules()[1].'/edit.php'; ?>
             <?php } else { ?>
                 <?php include TEMP_DIR.dynamicModules()[1].'/tables.php'; ?>
             <?php } ?>
