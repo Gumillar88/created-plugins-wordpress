@@ -116,6 +116,25 @@ function uploadFiles($files)
     return $data;
 }
 
+function uploadFilesArray($files)
+{
+    $path = wp_upload_dir();
+    $target_dir = $path['path'];
+
+    $target_file = $target_dir .'/'. basename($files[0]);
+
+    $image = $files[0];
+
+    move_uploaded_file($files[2],$target_file);
+
+    $data = [
+        'name'  => $image,
+        'path'  => $path['url'],
+    ];
+
+    return $data;
+}
+
 function pathEditAction()
 {
     if (isset($_GET['action']) AND isset($_GET['id'])) 
@@ -123,7 +142,7 @@ function pathEditAction()
         $result = "&action=".$_GET['action']."&id=".$_GET['id']."";
     }
     else {
-        $result = "";
+        $result = "&action=".$_GET['action']."";
     }
 
     return $result;

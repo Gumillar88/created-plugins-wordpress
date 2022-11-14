@@ -1,49 +1,43 @@
-<form role="form" method="POST" action="https://www.flourish.co.id/quantum/realm/our-works/create" multiple="" enctype="multipart/form-data">
-    <input type="hidden" name="_token" value="wT9O4ficia0bQxoNhAhVrJtFfnBi0LGHx0wCIXj1">
+<?php
+
+$contentPost    = $projects['create']['contentPost'];
+$categories     = $projects['create']['categories'];
+$tags           = $projects['create']['tags'];
+$clients        = $projects['create']['clients'];
+
+?>
+<form role="form" method="POST" action="<?= admin_url().'admin.php'.$createAction.$editAction ?>" multiple enctype="multipart/form-data">
     <div class="row">
         <div class="col-6">
             <div class="form-group py-2">
                 <label>Type Content</label>
                 <select class="select form-control" name="project_category_id">
                     <option selected="" disabled="">Please Choose Category</option>
-                        <option value="2">Portfolio</option>
-                        <option value="1">Case study</option>
+                    <?php foreach($contentPost as $column) { ?>
+                        <?php if ($column->ID != 1) { ?>
+                        <option value="<?= $column->ID ?>"><?= $column->post_title ?></option>
+                        <?php } ?>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group py-2">
                 <label>Category</label>
                 <select class="select form-control" name="project_subcategory_id">
                     <option selected="" disabled="">Please Choose Sub Category</option>
-                    <option value="4">MARKETING</option>
-                    <option value="3">TECHNOLOGY</option>
-                    <option value="2">CREATIVE</option>
-                    <option value="1">STRATEGY</option>
+                    <?php foreach($categories as $column) { ?>
+                        <?php if ($column->term_taxonomy_id != 1) { ?>
+                        <option value="<?= $column->term_taxonomy_id ?>"><?= $column->name ?></option>
+                        <?php } ?>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group py-2">
                 <label>Clients</label>
                 <select class="select form-control" name="client_id">
                     <option selected="" disabled="">Please Choose Clients</option>
-                    <option value="20">RPM</option>
-                    <option value="19">JSI</option>
-                    <option value="18">JAIF</option>
-                    <option value="17">ICBC</option>
-                    <option value="16">OXFAM IN ASIA</option>
-                    <option value="15">EU</option>
-                    <option value="14">ASEAN</option>
-                    <option value="13">nivata</option>
-                    <option value="12">Ciputra</option>
-                    <option value="11">Mosaic</option>
-                    <option value="10">Kudanil</option>
-                    <option value="9">Thiess</option>
-                    <option value="8">UNDP</option>
-                    <option value="7">South Grove</option>
-                    <option value="6">South Quarter</option>
-                    <option value="5">Intiland</option>
-                    <option value="4">Rosewood</option>
-                    <option value="3">Serenia Hills</option>
-                    <option value="2">SQRes</option>
-                    <option value="1">ERIA</option>
+                    <?php foreach($clients as $column) { ?>
+                        <option value="<?= $column->id ?>"><?= $column->title ?></option>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group py-2">
@@ -60,276 +54,14 @@
             </div>
             <div class="form-group py-2" style="border: 2px solid #c3c3c3;padding: 15px;">
                 <h4>Tags</h4>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="46" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Artificial Intellegence
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="44" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Web Maintenance
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="43" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Digital Marketing
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="42" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        SEO &amp; SEM
-                    </label>
-                </div>
-                                            <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="41" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Display Advertising
-                    </label>
-                </div>
-                                            <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="40" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Media Buying
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="39" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Experiential Marketing
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="38" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Marketing Campaigns
-                    </label>
-                </div>
-                                            <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="37" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Social Media Marketing
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="36" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Video Marketing
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="35" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Content Marketing
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="34" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Backend Development
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="33" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Web Applications
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="32" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Content Management Systems
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="31" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Plugin Development
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="30" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Integration
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="29" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Web Development
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="28" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Mobile Apps
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="27" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Interactive Games
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="26" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Ecommerce Solutions
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="25" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Data Visualization
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="24" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Packaging
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="23" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Photography
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="22" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Copywriting
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="21" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Illustration &amp; Animation
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="20" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Environmental Graphics
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="19" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Video &amp; Motion
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="18" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Mobile Apps
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="17" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Print
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="16" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Web
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="15" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Identity
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="14" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Presentations
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="13" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Campaign Development
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="12" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Social Media Strategy
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="11" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Marketing Strategy
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="10" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Brand Launch and Pivots
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="9" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Brand Strategy
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="8" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Naming
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="7" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Positioning &amp; Messaging
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="6" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Problem Discovery
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="5" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Market Segmentation
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="4" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Customer Journey Mapping
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="3" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Persona Development
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="2" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Targeting
-                    </label>
-                </div>
-                <div class="form-check pull-left" style="margin-right: 10px;">
-                    <input class="form-check-input" type="checkbox" name="tag_id[]" value="1" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Market Research
-                    </label>
-                </div>
+                <?php foreach($tags as $key => $column) { ?>
+                    <div class="form-check pull-left">
+                        <input class="form-check-input" type="checkbox" name="tag_id[]" value="<?= $column->term_taxonomy_id ?>" id="flexCheckDefault<?= $key ?>">
+                        <label class="form-check-label" for="flexCheckDefault<?= $key ?>">
+                            <?= $column->name ?> 
+                        </label>
+                    </div>
+                <?php } ?>
                 <div class="clearfix"></div>
             </div>
             <div class="form-group py-2" style="border: 2px solid #c3c3c3;padding: 15px;">
@@ -406,12 +138,13 @@
                 <input type="file" class="form-control" name="last_image" required="">
             </div>
         </div>
-        
+        <div class="col-12 mt-2">
+            <div class="form-group">
+                <p class="text-right" style="text-align: right;">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </p>
+            </div>
+        </div>
     </div>
-
-    <p class="text-right">
-        <input type="submit" class="btn btn-success" value="Create">
-        <a href="https://www.flourish.co.id/quantum/realm/our-works" class="btn btn-danger">Back</a>
-    </p>
 
 </form>
