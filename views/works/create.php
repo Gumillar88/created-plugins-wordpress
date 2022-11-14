@@ -55,16 +55,16 @@ $clients        = $projects['create']['clients'];
             <div class="form-group py-2" style="border: 1px solid #ced4da;padding: 15px;">
                 <h4>Tags</h4>
                 <?php foreach($tags as $key => $column) { ?>
-                    <div class="form-check pull-left">
+                    <div class="col-4 form-check pull-left" style="float:left;">
                         <input class="form-check-input" type="checkbox" name="tag_id[]" value="<?= $column->term_taxonomy_id ?>" id="flexCheckDefault<?= $key ?>">
-                        <label class="form-check-label" for="flexCheckDefault<?= $key ?>">
+                        <label class="form-check-label" for="flexCheckDefault<?= $key ?>" style="margin-top: -21px;">
                             <?= $column->name ?> 
                         </label>
                     </div>
                 <?php } ?>
                 <div class="clearfix"></div>
             </div>
-            <div class="form-group py-2" style="border: 1px solid #ced4da;padding: 15px;">
+            <div class="form-group mt-2" style="border: 1px solid #ced4da;padding: 15px;">
                 <label for="thumb">
                     SVG Image<span style="color: red;">(*)</span>
                     <br>
