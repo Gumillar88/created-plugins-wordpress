@@ -108,6 +108,52 @@ function getWorkByID($id)
     return $result;
 }
 
+function getOneContentPost($project_category_id)
+{
+    global $wpdb;
+
+    $query = "SELECT 
+            `wptj_posts`.* 
+            FROM `wptj_posts` 
+            WHERE `wptj_posts`.`post_type` = 'post' 
+            AND `wptj_posts`.`post_status` = 'publish'
+            AND `wptj_posts`.`ID` = '".$project_category_id."';";
+
+    $data = $wpdb->get_results($query)[0];
+    
+    return $data;
+}
+
+function getOneCategory($project_subcategory_id)
+{
+    global $wpdb;
+
+    $query = "SELECT 
+            `wptj_term_taxonomy`.*,
+            `wptj_terms`.`name`
+            FROM `wptj_term_taxonomy`
+            INNER JOIN `wptj_terms` ON `wptj_terms`.`term_id` = `wptj_term_taxonomy`.`term_id`
+            WHERE `wptj_term_taxonomy`.`taxonomy` = 'category'
+            AND `wptj_term_taxonomy`.`term_id` = '".$project_subcategory_id."';";
+
+    $data = $wpdb->get_results($query)[0];
+    
+    return $data;
+}
+
+function getOneClient($client_id)
+{
+    global $wpdb;
+
+    $query = "SELECT `wptj_clients`.*
+            FROM `wptj_clients`
+            WHERE `wptj_clients`.`id` = '".$client_id."';";
+
+    $data = $wpdb->get_results($query)[0];
+    
+    return $data;
+}
+
 function update_work($id, $result)
 {
     global $wpdb;

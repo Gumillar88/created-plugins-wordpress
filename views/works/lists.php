@@ -5,7 +5,6 @@ $projects = project_list($param);
 
 $editAction = pathEditAction();
 $createAction = pathCreatetAction();
-
 $project_data           = $projects['lists'];
 $_getAllClientData      = $projects['rel_client'];
 $_getAllCategoriesData  = $projects['rel_categories'];

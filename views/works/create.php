@@ -52,7 +52,7 @@ $clients        = $projects['create']['clients'];
                 <label for="description">Description</label>
                 <textarea class="form-control" name="description" placeholder="Description" style="height: 150px;" required=""></textarea>
             </div>
-            <div class="form-group py-2" style="border: 2px solid #c3c3c3;padding: 15px;">
+            <div class="form-group py-2" style="border: 1px solid #ced4da;padding: 15px;">
                 <h4>Tags</h4>
                 <?php foreach($tags as $key => $column) { ?>
                     <div class="form-check pull-left">
@@ -64,7 +64,7 @@ $clients        = $projects['create']['clients'];
                 <?php } ?>
                 <div class="clearfix"></div>
             </div>
-            <div class="form-group py-2" style="border: 2px solid #c3c3c3;padding: 15px;">
+            <div class="form-group py-2" style="border: 1px solid #ced4da;padding: 15px;">
                 <label for="thumb">
                     SVG Image<span style="color: red;">(*)</span>
                     <br>
@@ -81,7 +81,7 @@ $clients        = $projects['create']['clients'];
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group py-2" style="border: 2px solid #c3c3c3;padding: 15px;">
+            <div class="form-group py-2" style="border: 1px solid #ced4da;padding: 15px;">
                 <h3>Our Work Detail Page</h3>
                 <label for="image">
                     Hero Image
@@ -100,7 +100,7 @@ $clients        = $projects['create']['clients'];
                 </label>
                 <input type="file" class="form-control" name="second_image" required="">
                 <br>
-                <div style="border: 2px solid #c3c3c3;padding: 15px;">
+                <div style="border: 1px solid #ced4da;padding: 15px;">
                     <h4>Third Images</h4>
                     <label for="thumb">
                         First Image<span style="color: red;">(*)</span>

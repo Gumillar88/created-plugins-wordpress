@@ -16,14 +16,7 @@ function project_list($param)
     /*
     ** Create, Edit & status Modules
     */ 
-    if ($_GET['page'] == 'works' AND $_GET['action'] == 'edit') 
-    {
-        $result = editHandleWorks($_GET['id']);
-
-        $data['edit'] = $result;
-        return $data;
-    }
-    elseif ($_GET['page'] == 'works' AND $_GET['action'] == 'create') 
+    if ($_GET['page'] == 'works' AND $_GET['action'] == 'create') 
     {
         
         if(isset($_POST) AND !empty($_POST))
@@ -41,9 +34,17 @@ function project_list($param)
     }
     elseif ($_GET['page'] == 'works' AND $_GET['action'] == 'edit') 
     {
+        if(isset($_POST) AND !empty($_POST))
+        {
+            $result = editHandleWorks($_GET['id']);
 
-        $data['edit'] = '';
+            echo notifications($result);
+        }
 
+        $result = editRenderWorks($_GET['id']);
+
+        $data['edit'] = $result;
+        
         return $data;
     }
     elseif ($_GET['page'] == 'works' AND $_GET['action'] == 'status') 
@@ -79,6 +80,30 @@ function createRenderWorks()
         'clients'       => getAllClientData(),
     ];
 
+    return $data;
+}
+
+function editRenderWorks($id)
+{
+    $works = getWorkByID($id);
+
+    $projectcategory = getOneContentPost($works->project_category_id);
+    
+    $projectsubcategory = getOneCategory($works->project_subcategory_id);
+
+    $projectclient = getOneClient($works->client_id);
+    
+    $data = [
+        'contentPost'   => getAllContentPost(),
+        'categories'    => getAllCategories(),
+        'tags'          => getAllTags(),
+        'clients'       => getAllClientData(),
+        'works'         => $works,
+        'category_'     => $projectcategory,
+        'subcategory_'  => $projectsubcategory,
+        'client_'       => $projectclient,
+    ];
+    
     return $data;
 }
 
@@ -227,7 +252,7 @@ function createHandleWorks()
         'created'       => date('Y-m-d h:i:s'),
         'updated'       => date('Y-m-d h:i:s'),
     ];
-    
+
     $result = create_work($data);
     
     return $result;
