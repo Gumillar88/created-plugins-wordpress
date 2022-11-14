@@ -227,7 +227,7 @@ function createHandleWorks()
         'created'       => date('Y-m-d h:i:s'),
         'updated'       => date('Y-m-d h:i:s'),
     ];
-
+    
     $result = create_work($data);
     
     return $result;

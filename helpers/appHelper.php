@@ -1,6 +1,6 @@
 <?php
 /** 
-* Dev Collaborations Modules
+* Dev Helpers Modules
 * Hook : admin_menu
 */
 

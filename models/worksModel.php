@@ -8,7 +8,7 @@ function create_work($result)
 {
     global $wpdb;
 
-    $table = $wpdb->prefix.'works';
+    $table = $wpdb->prefix.'projects';
     
     $data = $wpdb->insert($table,$result);
     

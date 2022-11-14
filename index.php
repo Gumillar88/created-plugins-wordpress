@@ -3,7 +3,7 @@
 Plugin Name: Modules Flourish
 Description: This is a Modules From FLOURISH Plugin! This is to create a CMS!
 Author: Gumilar L Wijayadi
-Version: 1.0.1
+Version: 1.1.3
 */
 
 define('TEMP_DIR', plugin_dir_path(__FILE__).'/views/');
