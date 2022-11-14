@@ -21,6 +21,3 @@ $createAction = pathCreatetAction();
         </div>
     </div>
 </div>
-<script>
-    
-</script>

@@ -23,6 +23,7 @@ function career_list($param)
         else 
         {
             statusHandleCareers($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
         
     }
@@ -113,9 +114,15 @@ function editHandleCareers($id)
     return $data;
 }
 
-function statusHandleCareers()
+function statusHandleCareers($id)
 {
-    echo "Status career";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_career($id, $data);
+
+    return $result;
 }
 ?>

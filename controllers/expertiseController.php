@@ -23,6 +23,7 @@ function expertise_list($param)
         else 
         {
             statusHandleExpertises($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
         
     }
@@ -137,10 +138,16 @@ function editHandleExpertises($id)
     return $data;
 }
 
-function statusHandleExpertises()
+function statusHandleExpertises($id)
 {
-    echo "Status Expertises";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_expertise($id, $data);
+
+    return $result;
 }
 
 ?>

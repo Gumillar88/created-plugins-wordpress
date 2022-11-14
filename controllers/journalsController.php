@@ -23,6 +23,7 @@ function journals_list($param)
         else 
         {
             statusHandleJournals($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
         
     }
@@ -112,10 +113,16 @@ function editHandleJournals($id)
     return $data;
 }
 
-function statusHandleJournals()
+function statusHandleJournals($id)
 {
-    echo "Status Journals";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_journal($id, $data);
+
+    return $result;
 }
 
 ?>

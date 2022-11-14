@@ -23,8 +23,8 @@ function clients_list($param)
         else 
         {
             statusHandleClients($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
-        
     }
     else {
         if(isset($_POST) AND !empty($_POST))
@@ -112,10 +112,16 @@ function editHandleClients($id)
     return $data;
 }
 
-function statusHandleClients()
+function statusHandleClients($id)
 {
-    echo "Status Client";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_client($id, $data);
+
+    return $result;
 }
 
 

@@ -23,6 +23,7 @@ function peoples_list($param)
         else 
         {
             statusHandlePeoples($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
         
     }
@@ -111,10 +112,16 @@ function editHandlePeoples($id)
     return $data;
 }
 
-function statusHandlePeoples()
+function statusHandlePeoples($id)
 {
-    echo "Status people";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_people($id, $data);
+
+    return $result;
 }
 
 ?>

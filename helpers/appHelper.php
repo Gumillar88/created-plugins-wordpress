@@ -189,18 +189,25 @@ function status_url($page, $action, $id, $status)
 {
     if ($status > 0) 
     {
-        $template = '<a href="'.admin_url().'admin.php?page='.$page.'&action='.$action.'&id='.$id.'" class="btn btn-success" style="padding: 0 10px 3px;">
+        $template = '<a href="'.admin_url().'admin.php?page='.$page.'&action='.$action.'&id='.$id.'&temp=0" class="btn btn-success" style="padding: 0 10px 3px;">
                         <span class="dashicons dashicons-yes"></span>
                     </a>';
     }
     else 
     {
-        $template = '<a href="'.admin_url().'admin.php?page='.$page.'&action='.$action.'&id='.$id.'" class="btn btn-danger" style="padding: 0 10px 3px;">
+        $template = '<a href="'.admin_url().'admin.php?page='.$page.'&action='.$action.'&id='.$id.'&temp=1" class="btn btn-danger" style="padding: 0 10px 3px;">
                         <span class="dashicons dashicons-no"></span>
                     </a>';
     }
     
     return $template;
+}
+
+function redirect($url, $permanent = false)
+{
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
+
+    exit();
 }
 
 ?>

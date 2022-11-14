@@ -49,9 +49,8 @@ function project_list($param)
     }
     elseif ($_GET['page'] == 'works' AND $_GET['action'] == 'status') 
     {
-        $data['status'] = statusHandleWorks($_GET['id']);;
-
-        return $data;
+        statusHandleWorks($_GET['id']);
+        redirect(admin_url().'admin.php?page='.$_GET['page']);
     }
     else 
     {
@@ -450,10 +449,16 @@ function editHandleWorks()
     return $result;
 }
 
-function statusHandleWorks()
+function statusHandleWorks($id)
 {
-    echo "Status Works";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_work($id, $data);
+
+    return $result;
 }
 
 ?>

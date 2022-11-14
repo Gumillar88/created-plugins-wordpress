@@ -23,6 +23,7 @@ function collaborations_list($param)
         else 
         {
             statusHandleCollaborations($_GET['id']);
+            redirect(admin_url().'admin.php?page='.$_GET['page']);
         }
         
     }
@@ -112,10 +113,16 @@ function editHandleCollaborations($id)
     return $data;
 }
 
-function statusHandleCollaborations()
+function statusHandleCollaborations($id)
 {
-    echo "Status Collaborations";
-    exit();
+    $data = [
+        'is_active'     => $_GET['temp'],
+        'updated'       => date('Y-m-d h:i:s')
+    ];
+
+    $result = update_collaboration($id, $data);
+
+    return $result;
 }
 
 ?>
