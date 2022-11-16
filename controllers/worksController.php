@@ -247,7 +247,7 @@ function createHandleWorks()
         'last_description'          => $input['last_description'],
         'last_image'                => $last_image_name,
         'third_image'               => $third_image_input,
-        'path'                      => $path['url'],
+        'path'                      => $path['url'].'/',
         'created'       => date('Y-m-d h:i:s'),
         'updated'       => date('Y-m-d h:i:s'),
     ];
@@ -262,10 +262,14 @@ function editHandleWorks()
     $input = $_POST;
 
     $id = $input['id'];
+
     /*
     ** Upload Image Array Name Image
     */ 
-    if (isset($_FILES['image']) AND !empty($_FILES['image']['name'])) 
+    if (isset($_FILES['image']) 
+    AND !empty($_FILES['image']['name']) 
+    AND !empty($_FILES['image']['name']['svg']) 
+    AND !empty($_FILES['image']['name']['gif'])) 
     {
         
         foreach($_FILES['image'] as $file)
@@ -297,13 +301,13 @@ function editHandleWorks()
     {
         $svgimage = $input['image_old']['svg'];
         $gifimage = $input['image_old']['gif'];
-
+        
         $json_image = [
-            "svg"   => $input['image_old']['svg'],
-            "gif"   => $input['image_old']['gif'],
+            "svg"   => $svgimage,
+            "gif"   => $gifimage,
         ];
     }
-
+    
     /*
     ** Upload hero_image
     */ 
@@ -326,7 +330,7 @@ function editHandleWorks()
     /*
     ** Upload Image second_image
     */ 
-    if (isset($_FILES['second_image']) AND !empty($_FILES['second_image']['name'])) 
+    if (isset($_FILES['second_image']) AND !empty($_FILES['second_image']['name']))
     {
         /*
         ** This is Upload Files with Helper
@@ -345,7 +349,11 @@ function editHandleWorks()
     /*
     ** Upload Third Image Array
     */ 
-    if (isset($_FILES['third_image']) AND !empty($_FILES['third_image']['name'])) 
+    if (isset($_FILES['third_image']) 
+    AND !empty($_FILES['third_image']['name'])
+    AND !empty($_FILES['second_image']['name']['first'])
+    AND !empty($_FILES['second_image']['name']['second'])
+    AND !empty($_FILES['second_image']['name']['third'])) 
     {
         foreach($_FILES['third_image'] as $file)
         {
@@ -439,11 +447,11 @@ function editHandleWorks()
         'last_description'          => $input['last_description'],
         'last_image'                => $last_image_name,
         'third_image'               => $third_image_input,
-        'path'                      => $path['url'],
+        'path'                      => $path['url'].'/',
         'created'                   => date('Y-m-d h:i:s'),
         'updated'                   => date('Y-m-d h:i:s'),
     ];
-
+    
     $result = update_work($id, $data);
     
     return $result;

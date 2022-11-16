@@ -141,7 +141,7 @@ $third_image_ = json_decode($works->third_image);
                 <input type="file" class="form-control" name="hero_image">
                 <br>
                 <label for="second_title">Second Title</label>
-                <input type="text" class="form-control" name="second_title" placeholder="Second Title" value="" required="">
+                <input type="text" class="form-control" name="second_title" placeholder="Second Title" value="<?= $works->second_title ?>" required="">
                 <br>
                 <label for="image">
                     Second Image
@@ -183,10 +183,14 @@ $third_image_ = json_decode($works->third_image);
                 </div>
                 <br>
                 <label for="second_description">Second Description</label>
-                <textarea class="form-control" name="second_description" placeholder="Second Description" style="height: 150px;" required=""></textarea>
+                <textarea class="form-control" name="second_description" placeholder="Second Description" style="height: 150px;" required="">
+                    <?= $works->second_description ?>
+                </textarea>
                 <br>
                 <label for="last_description">Last Description</label>
-                <textarea class="form-control" name="last_description" placeholder="Last Description" style="height: 150px;" required=""></textarea>
+                <textarea class="form-control" name="last_description" placeholder="Last Description" style="height: 150px;" required="">
+                    <?= $works->last_description ?> 
+                </textarea>
                 <br>
                 <label for="image">
                     Last Image
